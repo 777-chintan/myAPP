@@ -46,15 +46,16 @@ public class MainActivity extends AppCompatActivity {
         DatabaseReference ref1=FirebaseDatabase.getInstance().getReference("User");
         System.out.println(firebaseAuth.getUid());
         DatabaseReference databaseReference=ref1.child(firebaseAuth.getUid());
-        databaseReference.addValueEventListener(new ValueEventListener() {
+
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.getValue(UserProfile.class)==null){
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                userProfile=snapshot.getValue(UserProfile.class);
+                if(userProfile.equals(null)){
                     startActivity(new Intent(MainActivity.this,AddDetailsActivity.class));
                     finish();
                 }
                 else{
-                    userProfile = dataSnapshot.getValue(UserProfile.class);
                     usertype=userProfile.getUserType();
                     if(usertype.equals("Customer")){
                         startActivity(new Intent(MainActivity.this,WelcomeActivity.class));
@@ -66,10 +67,12 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
+
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(MainActivity.this, databaseError.getCode(), Toast.LENGTH_SHORT).show();
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(MainActivity.this, error.getCode(), Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 }

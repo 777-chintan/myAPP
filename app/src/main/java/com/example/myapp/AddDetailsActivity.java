@@ -86,11 +86,12 @@ public class AddDetailsActivity extends AppCompatActivity {
         phone=FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber();
         UserProfile userprofile=new UserProfile(name,age,phone,usertype,id);
         myRef.child(id).setValue(userprofile);
-        if(usertype=="Custormer"){
+        Toast.makeText(AddDetailsActivity.this,usertype,Toast.LENGTH_SHORT).show();
+        if(usertype.equals("Customer")){
             startActivity(new Intent(AddDetailsActivity.this,WelcomeActivity.class));
             finish();
         }
-        if(usertype=="Service Provider"){
+        if(usertype.equals("Service Provider")){
             startActivity(new Intent(AddDetailsActivity.this,WelcomeActivity.class));
             finish();
         }

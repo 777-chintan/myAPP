@@ -98,8 +98,6 @@ public class OTPActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     checkusertype();
-                    startActivity(new Intent(OTPActivity.this,MainActivity.class));
-                    finish();
                 }
                 else{
                     if(task.getException() instanceof FirebaseAuthInvalidCredentialsException){
@@ -114,15 +112,15 @@ public class OTPActivity extends AppCompatActivity {
         DatabaseReference ref1=FirebaseDatabase.getInstance().getReference("User");
         System.out.println(firebaseAuth.getUid());
         DatabaseReference databaseReference=ref1.child(firebaseAuth.getUid());
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.getValue(UserProfile.class)==null){
+                userProfile=dataSnapshot.getValue(UserProfile.class);
+                if(userProfile.equals(null)){
                     startActivity(new Intent(OTPActivity.this,AddDetailsActivity.class));
                     finish();
                 }
                 else{
-                    userProfile = dataSnapshot.getValue(UserProfile.class);
                     usertype=userProfile.getUserType();
                     if(usertype.equals("Customer")){
                         startActivity(new Intent(OTPActivity.this,WelcomeActivity.class));
