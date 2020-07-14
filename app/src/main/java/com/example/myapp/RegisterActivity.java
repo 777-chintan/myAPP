@@ -26,6 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(validate()){
                     startActivity(new Intent(RegisterActivity.this,OTPActivity.class).putExtra("phone",Number));
+                    finish();
                 }
                 else{
                     Toast.makeText(RegisterActivity.this,"Enter Valid Phone Number",Toast.LENGTH_SHORT).show();

@@ -32,7 +32,7 @@ public class OTPActivity extends AppCompatActivity {
     private String verificationotp;
     private EditText OTP;
     private Button Register;
-    private String phone;
+    private String phone,usertype;
     private FirebaseAuth firebaseAuth;
     private UserProfile userProfile;
     private boolean flag=false;
@@ -97,14 +97,46 @@ public class OTPActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
+                    checkusertype();
+                    startActivity(new Intent(OTPActivity.this,MainActivity.class));
                     finish();
-                    startActivity(new Intent(OTPActivity.this,MainActivity.class).putExtra("phone",phone));
                 }
                 else{
                     if(task.getException() instanceof FirebaseAuthInvalidCredentialsException){
                         Toast.makeText(OTPActivity.this,"You have entered Wrong OTP",Toast.LENGTH_SHORT).show();
                     }
                 }
+            }
+        });
+    }
+
+    private void checkusertype(){
+        DatabaseReference ref1=FirebaseDatabase.getInstance().getReference("User");
+        System.out.println(firebaseAuth.getUid());
+        DatabaseReference databaseReference=ref1.child(firebaseAuth.getUid());
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getValue(UserProfile.class)==null){
+                    startActivity(new Intent(OTPActivity.this,AddDetailsActivity.class));
+                    finish();
+                }
+                else{
+                    userProfile = dataSnapshot.getValue(UserProfile.class);
+                    usertype=userProfile.getUserType();
+                    if(usertype.equals("Customer")){
+                        startActivity(new Intent(OTPActivity.this,WelcomeActivity.class));
+                        finish();
+                    }
+                    if(usertype.equals("Service Provider")){
+                        startActivity(new Intent(OTPActivity.this,WelcomeActivity.class));
+                        finish();
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(OTPActivity.this, databaseError.getCode(), Toast.LENGTH_SHORT).show();
             }
         });
     }

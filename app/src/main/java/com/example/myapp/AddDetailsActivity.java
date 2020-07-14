@@ -53,8 +53,6 @@ public class AddDetailsActivity extends AppCompatActivity {
         radioGroup=findViewById(R.id.rgroup);
         save=findViewById(R.id.btnSave);
         radiocheck=false;
-        Intent intent=getIntent();
-        phone=intent.getStringExtra("phone");
     }
 
     private boolean validate(){
@@ -86,6 +84,7 @@ public class AddDetailsActivity extends AppCompatActivity {
     private void sendUserData(){
         DatabaseReference myRef= FirebaseDatabase.getInstance().getReference("User");
         String id= FirebaseAuth.getInstance().getUid();
+        phone=FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber();
         UserProfile userprofile=new UserProfile(name,age,phone,usertype,id);
         myRef.child(id).setValue(userprofile);
     }

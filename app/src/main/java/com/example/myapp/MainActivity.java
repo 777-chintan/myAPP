@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private String name,age,phone,usertype,id;
     private UserProfile userProfile;
-    private boolean flag=true;
+    private boolean flag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,24 +31,10 @@ public class MainActivity extends AppCompatActivity {
         setup();
         if(firebaseAuth.getUid()!=null){
             checkusertype();
-            if(flag==false){
-                phone=getIntent().getStringExtra("phone");
-                finish();
-                startActivity(new Intent(MainActivity.this,AddDetailsActivity.class).putExtra("phone",phone));
-            }
-            usertype=userProfile.getUserType();
-            if(usertype.equals("Customer")) {
-                finish();
-                startActivity(new Intent(MainActivity.this, WelcomeActivity.class));
-            }
-            if(usertype.equals("Service Provider")){
-                finish();
-                startActivity(new Intent(MainActivity.this, WelcomeActivity.class));
-            }
         }
         else {
-            finish();
             startActivity(new Intent(MainActivity.this, RegisterActivity.class));
+            finish();
         }
     }
 
@@ -63,9 +49,21 @@ public class MainActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                flag=dataSnapshot.exists();
-                if(flag!=false) {
+                if(dataSnapshot.getValue(UserProfile.class)==null){
+                    startActivity(new Intent(MainActivity.this,AddDetailsActivity.class));
+                    finish();
+                }
+                else{
                     userProfile = dataSnapshot.getValue(UserProfile.class);
+                    usertype=userProfile.getUserType();
+                    if(usertype.equals("Customer")){
+                        startActivity(new Intent(MainActivity.this,WelcomeActivity.class));
+                        finish();
+                    }
+                    if(usertype.equals("Service Provider")){
+                        startActivity(new Intent(MainActivity.this,WelcomeActivity.class));
+                        finish();
+                    }
                 }
             }
             @Override
