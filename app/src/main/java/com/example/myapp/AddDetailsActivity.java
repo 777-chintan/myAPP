@@ -40,7 +40,6 @@ public class AddDetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(validate()){
                     sendUserData();
-                    startActivity(new Intent(AddDetailsActivity.this,MainActivity.class));
                 }
             }
         });
@@ -87,6 +86,14 @@ public class AddDetailsActivity extends AppCompatActivity {
         phone=FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber();
         UserProfile userprofile=new UserProfile(name,age,phone,usertype,id);
         myRef.child(id).setValue(userprofile);
+        if(usertype=="Custormer"){
+            startActivity(new Intent(AddDetailsActivity.this,WelcomeActivity.class));
+            finish();
+        }
+        if(usertype=="Service Provider"){
+            startActivity(new Intent(AddDetailsActivity.this,WelcomeActivity.class));
+            finish();
+        }
     }
 
 }
