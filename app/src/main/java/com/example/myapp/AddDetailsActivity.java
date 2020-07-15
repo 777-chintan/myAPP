@@ -24,7 +24,7 @@ public class AddDetailsActivity extends AppCompatActivity {
     private EditText UserName,UserAge;
     private RadioGroup radioGroup;
     private RadioButton radioButton;
-    private String name,age,phone,usertype,id;
+    private String name,age,phone,usertype="SET",id;
     private Button save;
     private boolean radiocheck;
 
@@ -87,11 +87,11 @@ public class AddDetailsActivity extends AppCompatActivity {
         UserProfile userprofile=new UserProfile(name,age,phone,usertype,id);
         myRef.child(id).setValue(userprofile);
         Toast.makeText(AddDetailsActivity.this,usertype,Toast.LENGTH_SHORT).show();
-        if(usertype.equals("Customer")){
+        if(usertype!=null && usertype.equals("Customer")){
             startActivity(new Intent(AddDetailsActivity.this,WelcomeActivity.class));
             finish();
         }
-        if(usertype.equals("Service Provider")){
+        if(usertype!=null && usertype.equals("Service Provider")){
             startActivity(new Intent(AddDetailsActivity.this,WelcomeActivity.class));
             finish();
         }

@@ -32,10 +32,8 @@ public class OTPActivity extends AppCompatActivity {
     private String verificationotp;
     private EditText OTP;
     private Button Register;
-    private String phone,usertype;
+    private String phone;
     private FirebaseAuth firebaseAuth;
-    private UserProfile userProfile;
-    private boolean flag=false;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
 
     @Override
@@ -48,7 +46,10 @@ public class OTPActivity extends AppCompatActivity {
         Register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                verifyVerificationCode(OTP.getText().toString());
+                if(OTP.getText().toString().length()==6)
+                    verifyVerificationCode(OTP.getText().toString());
+                else
+                    Toast.makeText(OTPActivity.this,"Enter Validate OTP",Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -88,7 +89,6 @@ public class OTPActivity extends AppCompatActivity {
 
     private void verifyVerificationCode(String code){
         PhoneAuthCredential credential=PhoneAuthProvider.getCredential(verificationotp,code);
-
         SignInWithCredential(credential);
     }
 
@@ -97,7 +97,7 @@ public class OTPActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    checkusertype();
+                    IsAdded();
                 }
                 else{
                     if(task.getException() instanceof FirebaseAuthInvalidCredentialsException){
@@ -108,33 +108,26 @@ public class OTPActivity extends AppCompatActivity {
         });
     }
 
-    private void checkusertype(){
-        DatabaseReference ref1=FirebaseDatabase.getInstance().getReference("User");
+    private void IsAdded() {
+        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference("User");
         System.out.println(firebaseAuth.getUid());
-        DatabaseReference databaseReference=ref1.child(firebaseAuth.getUid());
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        DatabaseReference databaseReference = ref1.child(firebaseAuth.getUid());
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                userProfile=dataSnapshot.getValue(UserProfile.class);
-                if(userProfile.equals(null)){
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    startActivity(new Intent(OTPActivity.this,MainActivity.class));
+                    finish();
+                }
+                else {
                     startActivity(new Intent(OTPActivity.this,AddDetailsActivity.class));
                     finish();
                 }
-                else{
-                    usertype=userProfile.getUserType();
-                    if(usertype.equals("Customer")){
-                        startActivity(new Intent(OTPActivity.this,WelcomeActivity.class));
-                        finish();
-                    }
-                    if(usertype.equals("Service Provider")){
-                        startActivity(new Intent(OTPActivity.this,WelcomeActivity.class));
-                        finish();
-                    }
-                }
             }
+
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(OTPActivity.this, databaseError.getCode(), Toast.LENGTH_SHORT).show();
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(OTPActivity.this, "Database Error" + error.getCode(), Toast.LENGTH_SHORT).show();
             }
         });
     }

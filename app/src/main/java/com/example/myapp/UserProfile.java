@@ -7,6 +7,8 @@ public class UserProfile {
     public String userType;
     public String userId;
 
+    public UserProfile(){}
+
     public UserProfile(String name,String age,String phone,String usertype,String id){
         this.userAge=age;
         this.userName=name;
