@@ -9,17 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddDetailsActivity"></activity>
+        <activity android:name=".CleaningActivity"></activity>
+        <activity android:name=".PaintingActivity" />
+        <activity android:name=".HomeappiancesActivity" />
+        <activity android:name=".PlumbingActivity" />
+        <activity android:name=".ElectricalActivity" />
+        <activity android:name=".CarpentryActivity" />
+        <activity android:name=".CustomerActivity" />
+        <activity android:name=".AddDetailsActivity" />
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".OTPActivity" />
-        <activity android:name=".RegisterActivity">
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".MainActivity">
         </activity>
     </application>
 

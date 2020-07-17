@@ -97,7 +97,8 @@ public class OTPActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    IsAdded();
+                    startActivity(new Intent(OTPActivity.this,MainActivity.class));
+                    //IsAdded();
                 }
                 else{
                     if(task.getException() instanceof FirebaseAuthInvalidCredentialsException){

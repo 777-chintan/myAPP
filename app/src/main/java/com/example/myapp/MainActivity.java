@@ -28,7 +28,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        gotopage();
+        if(firebaseAuth.getUid()!=null) {
+            gotopage();
+        }
+        else{
+            startActivity(new Intent(MainActivity.this,RegisterActivity.class));
+            finish();
+        }
     }
 
     private void gotopage() {
@@ -38,14 +44,20 @@ public class MainActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                userProfile = snapshot.getValue(UserProfile.class);
-                usertype = userProfile.getUserType();
-                if (usertype!=null && usertype.equals("Customer")) {
-                    startActivity(new Intent(MainActivity.this, WelcomeActivity.class));
-                    finish();
+                if(snapshot.exists()) {
+                    userProfile = snapshot.getValue(UserProfile.class);
+                    usertype = userProfile.getUserType();
+                    if (usertype != null && usertype.equals("Customer")) {
+                        startActivity(new Intent(MainActivity.this, CustomerActivity.class));
+                        finish();
+                    }
+                    if (usertype != null && usertype.equals("Service Provider")) {
+                        startActivity(new Intent(MainActivity.this, WelcomeActivity.class));
+                        finish();
+                    }
                 }
-                if (usertype!=null && usertype.equals("Service Provider")) {
-                    startActivity(new Intent(MainActivity.this, WelcomeActivity.class));
+                else{
+                    startActivity(new Intent(MainActivity.this,AddDetailsActivity.class));
                     finish();
                 }
             }
