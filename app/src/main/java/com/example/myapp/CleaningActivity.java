@@ -1,5 +1,6 @@
 package com.example.myapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,17 +8,21 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 public class CleaningActivity extends AppCompatActivity {
 
     private TextView tv1,tv2,tv3,tv4,tv5,tv6,tv7;
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cleaning);
-        setTitle("Plumbing Service");
+        setTitle("Cleaning Service");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setup();
+        setbottom();
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
@@ -27,6 +32,7 @@ public class CleaningActivity extends AppCompatActivity {
     }
 
     private void setup(){
+        bottomNavigationView=findViewById(R.id.bottom_navigation);
         tv1=findViewById(R.id.tv1);
         tv2=findViewById(R.id.tv2);
         tv3=findViewById(R.id.tv3);
@@ -34,5 +40,25 @@ public class CleaningActivity extends AppCompatActivity {
         tv5=findViewById(R.id.tv5);
         tv6=findViewById(R.id.tv6);
         tv7=findViewById(R.id.tv7);
+    }
+
+    private void setbottom(){
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case R.id.nav_home:
+                        startActivity(new Intent(CleaningActivity.this,CustomerActivity.class));
+                        break;
+                    case R.id.nav_cart:
+                        startActivity(new Intent(CleaningActivity.this,WelcomeActivity.class));
+                        break;
+                    case R.id.nav_profile:
+                        startActivity(new Intent(CleaningActivity.this,WelcomeActivity.class));
+                        break;
+                }
+                return true;
+            }
+        });
     }
 }

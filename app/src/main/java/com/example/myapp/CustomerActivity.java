@@ -1,21 +1,28 @@
 package com.example.myapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class CustomerActivity extends AppCompatActivity {
 
     private FrameLayout carpentry,electrical,plumbing,home_appliances,cleaning,painting;
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer);
         setup();
+        setbottom();
 
         carpentry.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,12 +69,33 @@ public class CustomerActivity extends AppCompatActivity {
     }
 
     private void setup(){
+        bottomNavigationView=findViewById(R.id.bottom_navigation);
         carpentry=findViewById(R.id.frCarpentry);
         electrical=findViewById(R.id.frElectrical);
         painting=findViewById(R.id.frPainting);
         plumbing=findViewById(R.id.frPlumbing);
         home_appliances=findViewById(R.id.frHomeAppliances);
         cleaning=findViewById(R.id.frCleaning);
+    }
+
+    private void setbottom(){
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case R.id.nav_home:
+                        Toast.makeText(CustomerActivity.this,"You are Already on the Home Page",Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.nav_cart:
+                        startActivity(new Intent(CustomerActivity.this,WelcomeActivity.class));
+                        break;
+                    case R.id.nav_profile:
+                        startActivity(new Intent(CustomerActivity.this,WelcomeActivity.class));
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
 }

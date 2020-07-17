@@ -1,5 +1,6 @@
 package com.example.myapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,17 +8,21 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 public class HomeappiancesActivity extends AppCompatActivity {
 
     private TextView tv1,tv2,tv3,tv4,tv5,tv6,tv7,tv8,tv9,tv10,tv11,tv12,tv13,tv14,tv15,tv16,tv17;
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homeappiances);
-        setTitle("Hpme Appliances Service");
+        setTitle("Home Appliances Service");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setup();
+        setbottom();
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
@@ -27,6 +32,7 @@ public class HomeappiancesActivity extends AppCompatActivity {
     }
 
     private void setup(){
+        bottomNavigationView=findViewById(R.id.bottom_navigation);
         tv1=findViewById(R.id.tv1);
         tv2=findViewById(R.id.tv2);
         tv3=findViewById(R.id.tv3);
@@ -44,6 +50,26 @@ public class HomeappiancesActivity extends AppCompatActivity {
         tv15=findViewById(R.id.tv15);
         tv16=findViewById(R.id.tv16);
         tv17=findViewById(R.id.tv17);
+    }
+
+    private void setbottom(){
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case R.id.nav_home:
+                        startActivity(new Intent(HomeappiancesActivity.this,CustomerActivity.class));
+                        break;
+                    case R.id.nav_cart:
+                        startActivity(new Intent(HomeappiancesActivity.this,WelcomeActivity.class));
+                        break;
+                    case R.id.nav_profile:
+                        startActivity(new Intent(HomeappiancesActivity.this,WelcomeActivity.class));
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
 }
