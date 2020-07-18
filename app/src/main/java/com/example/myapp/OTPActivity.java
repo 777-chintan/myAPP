@@ -67,7 +67,6 @@ public class OTPActivity extends AppCompatActivity {
             @Override
             public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
                 String code=phoneAuthCredential.getSmsCode();
-
                 if(code!=null){
                     OTP.setText(code);
                 }
@@ -97,38 +96,14 @@ public class OTPActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
+                    finish();
                     startActivity(new Intent(OTPActivity.this,MainActivity.class));
-                    //IsAdded();
                 }
                 else{
                     if(task.getException() instanceof FirebaseAuthInvalidCredentialsException){
                         Toast.makeText(OTPActivity.this,"You have entered Wrong OTP",Toast.LENGTH_SHORT).show();
                     }
                 }
-            }
-        });
-    }
-
-    private void IsAdded() {
-        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference("User");
-        System.out.println(firebaseAuth.getUid());
-        DatabaseReference databaseReference = ref1.child(firebaseAuth.getUid());
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    startActivity(new Intent(OTPActivity.this,MainActivity.class));
-                    finish();
-                }
-                else {
-                    startActivity(new Intent(OTPActivity.this,AddDetailsActivity.class));
-                    finish();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(OTPActivity.this, "Database Error" + error.getCode(), Toast.LENGTH_SHORT).show();
             }
         });
     }

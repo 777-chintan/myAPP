@@ -87,10 +87,11 @@ public class CustomerActivity extends AppCompatActivity {
                         Toast.makeText(CustomerActivity.this,"You are Already on the Home Page",Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_cart:
+                        finish();
                         startActivity(new Intent(CustomerActivity.this,WelcomeActivity.class));
                         break;
                     case R.id.nav_profile:
-                        startActivity(new Intent(CustomerActivity.this,WelcomeActivity.class));
+                        startActivity(new Intent(CustomerActivity.this,AccountActivity.class));
                         break;
                 }
                 return true;

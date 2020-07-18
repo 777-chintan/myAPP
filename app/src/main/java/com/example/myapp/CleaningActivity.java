@@ -26,8 +26,10 @@ public class CleaningActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
-        Intent myIntent = new Intent(getApplicationContext(), CustomerActivity.class);
-        startActivityForResult(myIntent, 0);
+        //Intent myIntent = new Intent(getApplicationContext(), CustomerActivity.class);
+        finish();
+        //startActivityForResult(myIntent, 0);
+        //finish();
         return true;
     }
 
@@ -47,14 +49,17 @@ public class CleaningActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
-                    case R.id.nav_home:
-                        startActivity(new Intent(CleaningActivity.this,CustomerActivity.class));
+                    case R.id.nav_home: {
+                        finish();
+                        startActivity(new Intent(CleaningActivity.this, CustomerActivity.class));
                         break;
+                    }
                     case R.id.nav_cart:
                         startActivity(new Intent(CleaningActivity.this,WelcomeActivity.class));
                         break;
                     case R.id.nav_profile:
-                        startActivity(new Intent(CleaningActivity.this,WelcomeActivity.class));
+                        finish();
+                        startActivity(new Intent(CleaningActivity.this,AccountActivity.class));
                         break;
                 }
                 return true;

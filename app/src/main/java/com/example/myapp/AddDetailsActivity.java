@@ -88,12 +88,12 @@ public class AddDetailsActivity extends AppCompatActivity {
         myRef.child(id).setValue(userprofile);
         Toast.makeText(AddDetailsActivity.this,usertype,Toast.LENGTH_SHORT).show();
         if(usertype!=null && usertype.equals("Customer")){
-            startActivity(new Intent(AddDetailsActivity.this,CustomerActivity.class));
             finish();
+            startActivity(new Intent(AddDetailsActivity.this,CustomerActivity.class));
         }
         if(usertype!=null && usertype.equals("Service Provider")){
-            startActivity(new Intent(AddDetailsActivity.this,WelcomeActivity.class));
             finish();
+            startActivity(new Intent(AddDetailsActivity.this,WelcomeActivity.class));
         }
     }
 

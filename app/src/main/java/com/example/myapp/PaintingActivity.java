@@ -28,8 +28,9 @@ public class PaintingActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
-        Intent myIntent = new Intent(getApplicationContext(), CustomerActivity.class);
-        startActivityForResult(myIntent, 0);
+        //Intent myIntent = new Intent(getApplicationContext(), CustomerActivity.class);
+        finish();
+        //startActivityForResult(myIntent, 0);
         return true;
     }
 
@@ -45,14 +46,17 @@ public class PaintingActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
-                    case R.id.nav_home:
-                        startActivity(new Intent(PaintingActivity.this,CustomerActivity.class));
+                    case R.id.nav_home: {
+                        finish();
+                        startActivity(new Intent(PaintingActivity.this, CustomerActivity.class));
                         break;
+                    }
                     case R.id.nav_cart:
                         startActivity(new Intent(PaintingActivity.this,WelcomeActivity.class));
                         break;
                     case R.id.nav_profile:
-                        startActivity(new Intent(PaintingActivity.this,WelcomeActivity.class));
+                        finish();
+                        startActivity(new Intent(PaintingActivity.this,AccountActivity.class));
                         break;
                 }
                 return true;

@@ -29,9 +29,6 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         setup();
-        if (firebaseAuth.getUid() != null) {
-            IsAdded();
-        }
         genOTP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,29 +53,5 @@ public class RegisterActivity extends AppCompatActivity {
         if(Number.length()==10)
             return true;
         return false;
-    }
-
-    private void IsAdded() {
-        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference("User");
-        System.out.println(firebaseAuth.getUid());
-        DatabaseReference databaseReference = ref1.child(firebaseAuth.getUid());
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    startActivity(new Intent(RegisterActivity.this,MainActivity.class));
-                    finish();
-                }
-                else {
-                    startActivity(new Intent(RegisterActivity.this,AddDetailsActivity.class));
-                    finish();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(RegisterActivity.this, "Database Error" + error.getCode(), Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 }

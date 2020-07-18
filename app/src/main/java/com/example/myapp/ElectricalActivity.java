@@ -26,8 +26,9 @@ public class ElectricalActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
-        Intent myIntent = new Intent(getApplicationContext(), CustomerActivity.class);
-        startActivityForResult(myIntent, 0);
+        //Intent myIntent = new Intent(getApplicationContext(), CustomerActivity.class);
+        //startActivityForResult(myIntent, 0);
+        finish();
         return true;
     }
 
@@ -45,14 +46,17 @@ public class ElectricalActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
-                    case R.id.nav_home:
-                        startActivity(new Intent(ElectricalActivity.this,CustomerActivity.class));
+                    case R.id.nav_home: {
+                        finish();
+                        startActivity(new Intent(ElectricalActivity.this, CustomerActivity.class));
                         break;
+                    }
                     case R.id.nav_cart:
                         startActivity(new Intent(ElectricalActivity.this,WelcomeActivity.class));
                         break;
                     case R.id.nav_profile:
-                        startActivity(new Intent(ElectricalActivity.this,WelcomeActivity.class));
+                        finish();
+                        startActivity(new Intent(ElectricalActivity.this,AccountActivity.class));
                         break;
                 }
                 return true;

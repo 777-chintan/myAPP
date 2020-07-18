@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
             gotopage();
         }
         else{
-            startActivity(new Intent(MainActivity.this,RegisterActivity.class));
             finish();
+            startActivity(new Intent(MainActivity.this,RegisterActivity.class));
         }
     }
 
@@ -48,17 +48,17 @@ public class MainActivity extends AppCompatActivity {
                     userProfile = snapshot.getValue(UserProfile.class);
                     usertype = userProfile.getUserType();
                     if (usertype != null && usertype.equals("Customer")) {
-                        startActivity(new Intent(MainActivity.this, CustomerActivity.class));
                         finish();
+                        startActivity(new Intent(MainActivity.this, CustomerActivity.class));
                     }
                     if (usertype != null && usertype.equals("Service Provider")) {
-                        startActivity(new Intent(MainActivity.this, WelcomeActivity.class));
                         finish();
+                        startActivity(new Intent(MainActivity.this, WelcomeActivity.class));
                     }
                 }
                 else{
-                    startActivity(new Intent(MainActivity.this,AddDetailsActivity.class));
                     finish();
+                    startActivity(new Intent(MainActivity.this,AddDetailsActivity.class));
                 }
             }
 

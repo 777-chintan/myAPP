@@ -26,8 +26,9 @@ public class HomeappiancesActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
-        Intent myIntent = new Intent(getApplicationContext(), CustomerActivity.class);
-        startActivityForResult(myIntent, 0);
+        //Intent myIntent = new Intent(getApplicationContext(), CustomerActivity.class);
+        finish();
+        //startActivityForResult(myIntent, 0);
         return true;
     }
 
@@ -57,14 +58,17 @@ public class HomeappiancesActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
-                    case R.id.nav_home:
+                    case R.id.nav_home: {
+                        finish();
                         startActivity(new Intent(HomeappiancesActivity.this,CustomerActivity.class));
                         break;
+                    }
                     case R.id.nav_cart:
                         startActivity(new Intent(HomeappiancesActivity.this,WelcomeActivity.class));
                         break;
                     case R.id.nav_profile:
-                        startActivity(new Intent(HomeappiancesActivity.this,WelcomeActivity.class));
+                        finish();
+                        startActivity(new Intent(HomeappiancesActivity.this,AccountActivity.class));
                         break;
                 }
                 return true;
