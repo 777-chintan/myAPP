@@ -6,15 +6,17 @@ public class UserProfile {
     public String userName;
     public String userType;
     public String userId;
+    public String userToken;
 
     public UserProfile(){}
 
-    public UserProfile(String name,String age,String phone,String usertype,String id){
+    public UserProfile(String name,String age,String phone,String usertype,String id,String usertoken){
         this.userAge=age;
         this.userName=name;
         this.userPhoneNumber=phone;
         this.userId=id;
         this.userType=usertype;
+        this.userToken=usertoken;
     }
 
     public String getUserId() {
@@ -41,4 +43,8 @@ public class UserProfile {
     }
     public String getUserType() { return userType; }
     public void setUserType(String userType) { this.userType = userType; }
+
+    public String getUserToken() { return userToken; }
+
+    public void setUserToken(String userToken) { this.userToken = userToken; }
 }

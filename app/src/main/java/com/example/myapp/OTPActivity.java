@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +18,7 @@ import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DataSnapshot;
@@ -24,6 +26,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import java.util.concurrent.TimeUnit;
 
@@ -94,11 +98,17 @@ public class OTPActivity extends AppCompatActivity {
     private void SignInWithCredential(PhoneAuthCredential credential){
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    finish();
-                    startActivity(new Intent(OTPActivity.this,MainActivity.class));
-                }
+            public void onComplete(@NonNull final Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    final DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+
+
+                logininto();
+                finish();
+
+                startActivity(new Intent(OTPActivity.this, MainActivity.class));
+            }
+
                 else{
                     if(task.getException() instanceof FirebaseAuthInvalidCredentialsException){
                         Toast.makeText(OTPActivity.this,"You have entered Wrong OTP",Toast.LENGTH_SHORT).show();
@@ -107,5 +117,43 @@ public class OTPActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void logininto() {
+            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+            final String userid = currentUser.getUid();
+
+            final DatabaseReference ref = FirebaseDatabase.getInstance().getReference("User");
+
+            ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    //getting token for user
+                    FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                            String token;
+                            if (!task.isSuccessful()) {
+                                token = task.getException().getMessage();
+                                Log.w("FCM TOKEN Failed", task.getException());
+                            } else {
+                                token = task.getResult().getToken();
+                                Log.i("FCM TOKEN", token);
+                                ref.child(userid).child("token").setValue(token);
+                            }
+                        }
+                    });
+
+
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Toast.makeText(OTPActivity.this,"Error fetching data",Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
 
 }

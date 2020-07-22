@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EditprofileActivity"></activity>
+        <activity android:name=".EditprofileActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".AccountActivity" />
         <activity android:name=".CleaningActivity" />
@@ -18,8 +18,9 @@
         <activity android:name=".PlumbingActivity" />
         <activity android:name=".ElectricalActivity" />
         <activity android:name=".CarpentryActivity" />
-        <activity android:name=".CustomerActivity"
-            android:noHistory="true"/>
+        <activity
+            android:name=".CustomerActivity"
+            android:noHistory="true" />
         <activity android:name=".AddDetailsActivity" />
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".OTPActivity" />
@@ -31,6 +32,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name=".FirebaseMessage" android:exported="false">
+            <intent-filter>
+            <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
     </application>
+
 
 </manifest>

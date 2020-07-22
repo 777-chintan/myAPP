@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">myAPP</string>
+    <string name="otification_channel_id">Default</string>
 </resources>

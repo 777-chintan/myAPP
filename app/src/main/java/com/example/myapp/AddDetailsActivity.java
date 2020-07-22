@@ -24,7 +24,7 @@ public class AddDetailsActivity extends AppCompatActivity {
     private EditText UserName,UserAge;
     private RadioGroup radioGroup;
     private RadioButton radioButton;
-    private String name,age,phone,usertype="SET",id;
+    private String name,age,phone,usertype="SET",id,usertoken;
     private Button save;
     private boolean radiocheck;
 
@@ -61,11 +61,11 @@ public class AddDetailsActivity extends AppCompatActivity {
             Toast.makeText(AddDetailsActivity.this,"Enter Your Name",Toast.LENGTH_SHORT).show();
             return false;
         }
-        else if(age.isEmpty() || age=="0"){
+        else if(age.isEmpty() || age.equals("0")){
             Toast.makeText(AddDetailsActivity.this,"Enter Your Age",Toast.LENGTH_SHORT).show();
             return false;
         }
-        else if(radiocheck==false){
+        else if(!radiocheck){
             Toast.makeText(AddDetailsActivity.this,"Select Usertype",Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -84,8 +84,15 @@ public class AddDetailsActivity extends AppCompatActivity {
         DatabaseReference myRef= FirebaseDatabase.getInstance().getReference("User");
         String id= FirebaseAuth.getInstance().getUid();
         phone=FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber();
-        UserProfile userprofile=new UserProfile(name,age,phone,usertype,id);
-        myRef.child(id).setValue(userprofile);
+//        UserProfile userprofile=new UserProfile(name,age,phone,usertype,id,usertoken);
+//        myRef.child(id).setValue(userprofile);
+        myRef.child(id).child("userAge").setValue(age);
+        myRef.child(id).child("userName").setValue(name);
+        myRef.child(id).child("userType").setValue(usertype);
+        myRef.child(id).child("userId").setValue(id);
+        myRef.child(id).child("userPhoneNumber").setValue(phone);
+
+
         Toast.makeText(AddDetailsActivity.this,usertype,Toast.LENGTH_SHORT).show();
         if(usertype!=null && usertype.equals("Customer")){
             finish();
