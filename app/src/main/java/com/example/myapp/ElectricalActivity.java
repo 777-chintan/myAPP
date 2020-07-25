@@ -26,8 +26,8 @@ public class ElectricalActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
-        //Intent myIntent = new Intent(getApplicationContext(), CustomerActivity.class);
-        //startActivityForResult(myIntent, 0);
+        Intent myIntent = new Intent(getApplicationContext(), CustomerActivity.class);
+        startActivityForResult(myIntent, 0);
         finish();
         return true;
     }

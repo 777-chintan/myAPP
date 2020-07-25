@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -16,6 +17,7 @@ public class CustomerActivity extends AppCompatActivity {
 
     private FrameLayout carpentry,electrical,plumbing,home_appliances,cleaning,painting;
     private BottomNavigationView bottomNavigationView;
+    private TextView location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +68,14 @@ public class CustomerActivity extends AppCompatActivity {
             }
         });
 
+//        location.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //Toast.makeText(CustomerActivity.this,"Not Implemented",Toast.LENGTH_SHORT).show();
+//                startActivity(new Intent(CustomerActivity.this,MapActivity.class));
+//            }
+//        });
+
     }
 
     private void setup(){
@@ -76,6 +86,7 @@ public class CustomerActivity extends AppCompatActivity {
         plumbing=findViewById(R.id.frPlumbing);
         home_appliances=findViewById(R.id.frHomeAppliances);
         cleaning=findViewById(R.id.frCleaning);
+        location=findViewById(R.id.tvlocation);
     }
 
     private void setbottom(){
@@ -87,7 +98,6 @@ public class CustomerActivity extends AppCompatActivity {
                         Toast.makeText(CustomerActivity.this,"You are Already on the Home Page",Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_cart:
-                        finish();
                         startActivity(new Intent(CustomerActivity.this,WelcomeActivity.class));
                         break;
                     case R.id.nav_profile:

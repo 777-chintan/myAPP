@@ -47,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
                 if(snapshot.exists()) {
                     userProfile = snapshot.getValue(UserProfile.class);
                     usertype = userProfile.getUserType();
+                    if(usertype==null){
+                        finish();
+                        startActivity(new Intent(MainActivity.this,AddDetailsActivity.class));
+                    }
                     if (usertype != null && usertype.equals("Customer")) {
                         finish();
                         startActivity(new Intent(MainActivity.this, CustomerActivity.class));

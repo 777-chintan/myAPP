@@ -119,17 +119,16 @@ public class OTPActivity extends AppCompatActivity {
     }
 
     private void logininto() {
-            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-            final String userid = currentUser.getUid();
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        final String userid = currentUser.getUid();
 
-            final DatabaseReference ref = FirebaseDatabase.getInstance().getReference("User");
+        final DatabaseReference ref = FirebaseDatabase.getInstance().getReference("User");
 
-            ref.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     //getting token for user
-                    FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
                         @Override
                         public void onComplete(@NonNull Task<InstanceIdResult> task) {
                             String token;
@@ -139,21 +138,16 @@ public class OTPActivity extends AppCompatActivity {
                             } else {
                                 token = task.getResult().getToken();
                                 Log.i("FCM TOKEN", token);
-                                ref.child(userid).child("token").setValue(token);
+                                ref.child(userid).child("userToken").setValue(token);
                             }
                         }
-                    });
-
-
-
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Toast.makeText(OTPActivity.this,"Error fetching data",Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
-
+                });
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(OTPActivity.this,"Error fetching data",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
 }

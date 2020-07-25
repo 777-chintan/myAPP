@@ -26,9 +26,9 @@ public class PlumbingActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
-        //Intent myIntent = new Intent(getApplicationContext(), CustomerActivity.class);
+        Intent myIntent = new Intent(getApplicationContext(), CustomerActivity.class);
         finish();
-        //startActivityForResult(myIntent, 0);
+        startActivityForResult(myIntent, 0);
         return true;
     }
 

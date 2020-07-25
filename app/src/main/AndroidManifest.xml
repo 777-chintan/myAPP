@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myapp">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,35 +13,64 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EditprofileActivity" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".AccountActivity" />
-        <activity android:name=".CleaningActivity" />
-        <activity android:name=".PaintingActivity" />
-        <activity android:name=".HomeappiancesActivity" />
-        <activity android:name=".PlumbingActivity" />
-        <activity android:name=".ElectricalActivity" />
-        <activity android:name=".CarpentryActivity" />
+        <activity android:name=".Addaddress"
+            android:noHistory="true"/>
+        <activity android:name=".Manageaddress"
+            android:noHistory="true"/>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
         <activity
-            android:name=".CustomerActivity"
+            android:name=".EditprofileActivity"
             android:noHistory="true" />
-        <activity android:name=".AddDetailsActivity" />
-        <activity android:name=".WelcomeActivity" />
-        <activity android:name=".OTPActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".ProfileActivity"
+            android:noHistory="true" />
+        <activity
+            android:name=".AccountActivity"
+            android:noHistory="true" />
+        <activity
+            android:name=".CleaningActivity"
+            android:noHistory="true" />
+        <activity
+            android:name=".PaintingActivity"
+            android:noHistory="true" />
+        <activity
+            android:name=".HomeappiancesActivity"
+            android:noHistory="true" />
+        <activity
+            android:name=".PlumbingActivity"
+            android:noHistory="true" />
+        <activity
+            android:name=".ElectricalActivity"
+            android:noHistory="true" />
+        <activity
+            android:name=".CarpentryActivity"
+            android:noHistory="true" />
+        <activity android:name=".CustomerActivity" />
+        <activity
+            android:name=".AddDetailsActivity"
+            android:noHistory="true" />
+        <activity
+            android:name=".WelcomeActivity"
+            android:noHistory="true" />
+        <activity
+            android:name=".OTPActivity"
+            android:noHistory="true" />
+        <activity
+            android:name=".RegisterActivity"
+            android:noHistory="true" />
+        <activity
+            android:name=".MainActivity"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".FirebaseMessage" android:exported="false">
-            <intent-filter>
-            <action android:name="com.google.firebase.MESSAGING_EVENT"/>
-            </intent-filter>
-        </service>
     </application>
-
 
 </manifest>

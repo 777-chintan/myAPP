@@ -28,6 +28,7 @@ public class EditprofileActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
     private UserProfile userProfile;
+    private String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +62,7 @@ public class EditprofileActivity extends AppCompatActivity {
                     userProfile.setUserAge(age.getText().toString());
                     userProfile.setUserName(name.getText().toString());
                     databaseReference.setValue(userProfile);
+
                     finish();
                 }
             }
@@ -69,8 +71,8 @@ public class EditprofileActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
-        //Intent myIntent = new Intent(getApplicationContext(), ProfileActivity.class);
-        //startActivityForResult(myIntent, 0);
+        Intent myIntent = new Intent(getApplicationContext(), ProfileActivity.class);
+        startActivityForResult(myIntent, 0);
         finish();
         return true;
     }

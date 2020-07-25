@@ -29,6 +29,14 @@ public class AccountActivity extends AppCompatActivity {
             }
         });
 
+        tv2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AccountActivity.this,Manageaddress.class));
+                finish();
+            }
+        });
+
         tv4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,7 +45,6 @@ public class AccountActivity extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 
     private void setup(){
@@ -48,9 +55,9 @@ public class AccountActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
-  //      Intent myIntent = new Intent(getApplicationContext(), CustomerActivity.class);
+        Intent myIntent = new Intent(getApplicationContext(), CustomerActivity.class);
+        startActivityForResult(myIntent, 0);
         finish();
-//        startActivityForResult(myIntent, 0);
         return true;
     }
 }
