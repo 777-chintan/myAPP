@@ -80,14 +80,14 @@ public class Placeorder extends AppCompatActivity {
             }
         });
 
+        ref=FirebaseDatabase.getInstance().getReference("Orders");
+        ref2=FirebaseDatabase.getInstance().getReference("UserOrders").child("Current Order");
+        ref3=FirebaseDatabase.getInstance().getReference("Provider").child(id);
         check();
 
         place.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ref=FirebaseDatabase.getInstance().getReference("Orders");
-                ref2=FirebaseDatabase.getInstance().getReference("UserOrders").child("Current Order");
-                ref3=FirebaseDatabase.getInstance().getReference("Provider").child(id);
                 if(flag) {
                     String key = ref.push().getKey();
                     order.setOrderID(key);
