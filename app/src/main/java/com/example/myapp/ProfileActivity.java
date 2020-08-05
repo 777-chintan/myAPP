@@ -24,7 +24,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private TextView name,number,age;
     private Button edit;
-    private BottomNavigationView bottomNavigationView;
+    //private BottomNavigationView bottomNavigationView;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
 
@@ -35,27 +35,26 @@ public class ProfileActivity extends AppCompatActivity {
         setTitle("My Profile");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setup();
-        setbottom();
+        //setbottom();
         getdata();
 
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ProfileActivity.this,EditprofileActivity.class));
-                finish();
             }
         });
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
-        Intent myIntent = new Intent(getApplicationContext(), AccountActivity.class);
-        startActivityForResult(myIntent, 0);
+        //Intent myIntent = new Intent(getApplicationContext(), AccountActivity.class);
+        //startActivityForResult(myIntent, 0);
         finish();
         return true;
     }
 
     private void setup(){
-        bottomNavigationView=findViewById(R.id.bottom_navigation);
+        //bottomNavigationView=findViewById(R.id.bottom_navigation);
         age=findViewById(R.id.etAge);
         name=findViewById(R.id.etName);
         number=findViewById(R.id.etPhoneNumber);
@@ -64,28 +63,28 @@ public class ProfileActivity extends AppCompatActivity {
         firebaseDatabase=FirebaseDatabase.getInstance();
     }
 
-    private void setbottom(){
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()){
-                    case R.id.nav_home: {
-                        finish();
-                        startActivity(new Intent(ProfileActivity.this, CustomerActivity.class));
-                        break;
-                    }
-                    case R.id.nav_cart:
-                        startActivity(new Intent(ProfileActivity.this,WelcomeActivity.class));
-                        break;
-                    case R.id.nav_profile:
-                        finish();
-                        startActivity(new Intent(ProfileActivity.this,AccountActivity.class));
-                        break;
-                }
-                return true;
-            }
-        });
-    }
+//    private void setbottom(){
+//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+//                switch (menuItem.getItemId()){
+//                    case R.id.nav_home: {
+//                        finish();
+//                        startActivity(new Intent(ProfileActivity.this, CustomerActivity.class));
+//                        break;
+//                    }
+//                    case R.id.nav_cart:
+//                        startActivity(new Intent(ProfileActivity.this,WelcomeActivity.class));
+//                        break;
+//                    case R.id.nav_profile:
+//                        finish();
+//                        startActivity(new Intent(ProfileActivity.this,AccountActivity.class));
+//                        break;
+//                }
+//                return true;
+//            }
+//        });
+//    }
 
     private void  getdata(){
         DatabaseReference ref1=firebaseDatabase.getReference("User");

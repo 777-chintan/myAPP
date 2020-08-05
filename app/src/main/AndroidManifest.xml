@@ -3,7 +3,7 @@
     package="com.example.myapp">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -13,58 +13,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Addaddress"
-            android:noHistory="true"/>
-        <activity android:name=".Manageaddress"
-            android:noHistory="true"/>
+        <activity android:name=".Pastorders"></activity>
+        <activity android:name=".Currentorder" />
+        <activity android:name=".OrderList" />
+        <activity android:name=".Placeorder" />
+        <activity android:name=".Addskill" />
+        <activity android:name=".SkillActivity" />
+        <activity android:name=".GetlistActivity" />
+        <activity android:name=".ServiceProvider" />
+        <activity android:name=".CustomerActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".EditprofileActivity"
-            android:noHistory="true" />
-        <activity
-            android:name=".ProfileActivity"
-            android:noHistory="true" />
-        <activity
-            android:name=".AccountActivity"
-            android:noHistory="true" />
-        <activity
-            android:name=".CleaningActivity"
-            android:noHistory="true" />
-        <activity
-            android:name=".PaintingActivity"
-            android:noHistory="true" />
-        <activity
-            android:name=".HomeappiancesActivity"
-            android:noHistory="true" />
-        <activity
-            android:name=".PlumbingActivity"
-            android:noHistory="true" />
-        <activity
-            android:name=".ElectricalActivity"
-            android:noHistory="true" />
-        <activity
-            android:name=".CarpentryActivity"
-            android:noHistory="true" />
-        <activity android:name=".CustomerActivity" />
-        <activity
-            android:name=".AddDetailsActivity"
-            android:noHistory="true" />
-        <activity
-            android:name=".WelcomeActivity"
-            android:noHistory="true" />
-        <activity
-            android:name=".OTPActivity"
-            android:noHistory="true" />
-        <activity
-            android:name=".RegisterActivity"
-            android:noHistory="true" />
-        <activity
-            android:name=".MainActivity"
-            android:noHistory="true">
+        <activity android:name=".Addaddress" />
+        <activity android:name=".Manageaddress" />
+        <activity android:name=".EditprofileActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".AccountActivity" />
+        <activity android:name=".CleaningActivity" />
+        <activity android:name=".PaintingActivity" />
+        <activity android:name=".HomeappiancesActivity" />
+        <activity android:name=".PlumbingActivity" />
+        <activity android:name=".ElectricalActivity" />
+        <activity android:name=".CarpentryActivity" />
+        <activity android:name=".AddDetailsActivity" />
+        <activity android:name=".WelcomeActivity" />
+        <activity android:name=".OTPActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

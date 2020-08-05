@@ -40,6 +40,8 @@
                 android:background="@drawable/border"
                 android:gravity="center"
                 android:text="General Plumbing Work"
+                android:onClick="onclick"
+                android:clickable="true"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
@@ -51,6 +53,8 @@
                 android:background="@drawable/border"
                 android:gravity="center"
                 android:text="Showers,tubs and tap"
+                android:onClick="onclick"
+                android:clickable="true"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
@@ -61,7 +65,9 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/border"
                 android:gravity="center"
-                android:text="Toilet,Bathroom Installation \nand Repairing"
+                android:text="Toilet,Bathroom Installation and Repairing"
+                android:onClick="onclick"
+                android:clickable="true"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
@@ -72,7 +78,9 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/border"
                 android:gravity="center"
-                android:text="Toilets, kitchen and bathroom \nsinks"
+                android:text="Toilets, kitchen and bathroom sinks"
+                android:onClick="onclick"
+                android:clickable="true"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
@@ -84,6 +92,8 @@
                 android:background="@drawable/border"
                 android:gravity="center"
                 android:text="Water tank"
+                android:onClick="onclick"
+                android:clickable="true"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
@@ -94,7 +104,9 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/border"
                 android:gravity="center"
-                android:text="Water lines/pipe fitting and repairing"
+                android:text="Water lines or pipe fitting and repairing"
+                android:onClick="onclick"
+                android:clickable="true"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 

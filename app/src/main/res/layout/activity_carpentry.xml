@@ -40,6 +40,8 @@
                 android:background="@drawable/border"
                 android:gravity="center"
                 android:text="General Carpentry Work"
+                android:onClick="onclick"
+                android:clickable="true"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
@@ -51,6 +53,8 @@
                 android:background="@drawable/border"
                 android:gravity="center"
                 android:text="Furniture Repairing"
+                android:onClick="onclick"
+                android:clickable="true"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
@@ -61,7 +65,9 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/border"
                 android:gravity="center"
-                android:text="Furniture Installation and \nAssembling"
+                android:text="Furniture Installation and Assembling"
+                android:onClick="onclick"
+                android:clickable="true"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
@@ -73,6 +79,8 @@
                 android:background="@drawable/border"
                 android:gravity="center"
                 android:text="Door, Window repairing"
+                android:onClick="onclick"
+                android:clickable="true"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
@@ -84,6 +92,8 @@
                 android:background="@drawable/border"
                 android:gravity="center"
                 android:text="Drill and hang"
+                android:onClick="onclick"
+                android:clickable="true"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 

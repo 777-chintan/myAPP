@@ -6,13 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeappiancesActivity extends AppCompatActivity {
 
-    private TextView tv1,tv2,tv3,tv4,tv5,tv6,tv7,tv8,tv9,tv10,tv11,tv12,tv13,tv14,tv15,tv16,tv17;
+    //private TextView tv1,tv2,tv3,tv4,tv5,tv6,tv7,tv8,tv9,tv10,tv11,tv12,tv13,tv14,tv15,tv16,tv17;
     private BottomNavigationView bottomNavigationView;
 
     @Override
@@ -25,6 +26,12 @@ public class HomeappiancesActivity extends AppCompatActivity {
         setbottom();
     }
 
+    public void onclick(View v){
+        TextView t=(TextView) findViewById(v.getId());
+        //Toast.makeText(ElectricalActivity.this,t.getText().toString(),Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(HomeappiancesActivity.this,GetlistActivity.class).putExtra("service",t.getText().toString()));
+    }
+
     public boolean onOptionsItemSelected(MenuItem item){
         Intent myIntent = new Intent(getApplicationContext(), CustomerActivity.class);
         finish();
@@ -34,23 +41,23 @@ public class HomeappiancesActivity extends AppCompatActivity {
 
     private void setup(){
         bottomNavigationView=findViewById(R.id.bottom_navigation);
-        tv1=findViewById(R.id.tv1);
-        tv2=findViewById(R.id.tv2);
-        tv3=findViewById(R.id.tv3);
-        tv4=findViewById(R.id.tv4);
-        tv5=findViewById(R.id.tv5);
-        tv6=findViewById(R.id.tv6);
-        tv7=findViewById(R.id.tv7);
-        tv8=findViewById(R.id.tv8);
-        tv9=findViewById(R.id.tv9);
-        tv10=findViewById(R.id.tv10);
-        tv11=findViewById(R.id.tv11);
-        tv12=findViewById(R.id.tv12);
-        tv13=findViewById(R.id.tv13);
-        tv14=findViewById(R.id.tv14);
-        tv15=findViewById(R.id.tv15);
-        tv16=findViewById(R.id.tv16);
-        tv17=findViewById(R.id.tv17);
+//        tv1=findViewById(R.id.tv1);
+//        tv2=findViewById(R.id.tv2);
+//        tv3=findViewById(R.id.tv3);
+//        tv4=findViewById(R.id.tv4);
+//        tv5=findViewById(R.id.tv5);
+//        tv6=findViewById(R.id.tv6);
+//        tv7=findViewById(R.id.tv7);
+//        tv8=findViewById(R.id.tv8);
+//        tv9=findViewById(R.id.tv9);
+//        tv10=findViewById(R.id.tv10);
+//        tv11=findViewById(R.id.tv11);
+//        tv12=findViewById(R.id.tv12);
+//        tv13=findViewById(R.id.tv13);
+//        tv14=findViewById(R.id.tv14);
+//        tv15=findViewById(R.id.tv15);
+//        tv16=findViewById(R.id.tv16);
+//        tv17=findViewById(R.id.tv17);
     }
 
     private void setbottom(){

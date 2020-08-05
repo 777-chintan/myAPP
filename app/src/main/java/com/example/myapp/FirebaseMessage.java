@@ -49,7 +49,7 @@ public class FirebaseMessage extends FirebaseMessagingService {
         Bundle bundle = new Bundle();
         bundle.putString("Notification", data.get("Message"));
 
-        Intent intent = new Intent(this,WelcomeActivity.class);
+        Intent intent = new Intent(this,Currentorder.class);
         intent.putExtras(bundle);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, "Default")

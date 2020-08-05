@@ -6,13 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class CleaningActivity extends AppCompatActivity {
 
-    private TextView tv1,tv2,tv3,tv4,tv5,tv6,tv7;
+   // private TextView tv1,tv2,tv3,tv4,tv5,tv6,tv7;
     private BottomNavigationView bottomNavigationView;
 
     @Override
@@ -25,6 +26,12 @@ public class CleaningActivity extends AppCompatActivity {
         setbottom();
     }
 
+    public void onclick(View v){
+        TextView t=(TextView) findViewById(v.getId());
+        //Toast.makeText(ElectricalActivity.this,t.getText().toString(),Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(CleaningActivity.this,GetlistActivity.class).putExtra("service",t.getText().toString()));
+    }
+
     public boolean onOptionsItemSelected(MenuItem item){
         Intent myIntent = new Intent(getApplicationContext(), CustomerActivity.class);
         finish();
@@ -35,13 +42,13 @@ public class CleaningActivity extends AppCompatActivity {
 
     private void setup(){
         bottomNavigationView=findViewById(R.id.bottom_navigation);
-        tv1=findViewById(R.id.tv1);
-        tv2=findViewById(R.id.tv2);
-        tv3=findViewById(R.id.tv3);
-        tv4=findViewById(R.id.tv4);
-        tv5=findViewById(R.id.tv5);
-        tv6=findViewById(R.id.tv6);
-        tv7=findViewById(R.id.tv7);
+//        tv1=findViewById(R.id.tv1);
+//        tv2=findViewById(R.id.tv2);
+//        tv3=findViewById(R.id.tv3);
+//        tv4=findViewById(R.id.tv4);
+//        tv5=findViewById(R.id.tv5);
+//        tv6=findViewById(R.id.tv6);
+//        tv7=findViewById(R.id.tv7);
     }
 
     private void setbottom(){

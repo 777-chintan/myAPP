@@ -40,6 +40,8 @@
                 android:background="@drawable/border"
                 android:gravity="center"
                 android:text="Interior painting"
+                android:onClick="onclick"
+                android:clickable="true"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
@@ -51,6 +53,8 @@
                 android:background="@drawable/border"
                 android:gravity="center"
                 android:text="Exterior painting"
+                android:onClick="onclick"
+                android:clickable="true"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
@@ -62,6 +66,8 @@
                 android:background="@drawable/border"
                 android:gravity="center"
                 android:text="Other painting"
+                android:onClick="onclick"
+                android:clickable="true"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 

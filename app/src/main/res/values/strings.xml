@@ -2,4 +2,51 @@
     <string name="app_name">myAPP</string>
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyCViVOOQHbF87JH37oCPmY5kvXnPCyZXHE</string>
     <string name="otification_channel_id">Default</string>
+    <string-array name="skill">
+        <item>General Electrical Wiring</item>
+        <item>Fuse Repairing</item>
+        <item>Water motor Repairing and Installation</item>
+        <item>Inverter Repairing and Installation</item>
+        <item>Lamps and light fitting</item>
+        <item>General Carpentry Work</item>
+        <item>Furniture Repairing</item>
+        <item>Furniture Installation and Assembling</item>
+        <item>Door, Window repairing</item>
+        <item>Drill and hang</item>
+        <item>Complete home cleaning</item>
+        <item>Fridge cleaning</item>
+        <item>Bathroom or Washroom cleaning</item>
+        <item>Kitchen cleaning</item>
+        <item>chair, sofa cleaning</item>
+        <item>Vehicle washing</item>
+        <item>Water tank cleaning</item>
+        <item>Floor cleaning</item>
+        <item>Gardening</item>
+        <item>Ceiling and table fan</item>
+        <item>AC</item>
+        <item>Air cooler</item>
+        <item>Tv</item>
+        <item>RO or Water purifier</item>
+        <item>Geyser</item>
+        <item>Microwave Oven</item>
+        <item>Iron</item>
+        <item>Juicer, mixer,grinder,blender </item>
+        <item>Ghar ghanti</item>
+        <item>Home theatre</item>
+        <item>Washing machine </item>
+        <item>Refrigerator </item>
+        <item>Water heater</item>
+        <item>Computer or laptop</item>
+        <item>Mobile</item>
+        <item>Other home appliances services</item>
+        <item>Interior painting</item>
+        <item>Exterior painting</item>
+        <item>Other painting</item>
+        <item>General Plumbing Work</item>
+        <item>Showers,tubs and tap</item>
+        <item>Toilet,Bathroom Installation and Repairing</item>
+        <item>Toilets, kitchen and bathroom sinks</item>
+        <item>Water tank</item>
+        <item>Water lines or pipe fitting and repairing</item>
+    </string-array>
 </resources>

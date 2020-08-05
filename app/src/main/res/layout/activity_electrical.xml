@@ -39,6 +39,8 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/border"
                 android:gravity="center"
+                android:onClick="onclick"
+                android:clickable="true"
                 android:text="General Electrical Wiring"
                 android:textColor="#000000"
                 android:textSize="20sp" />
@@ -51,6 +53,8 @@
                 android:background="@drawable/border"
                 android:gravity="center"
                 android:text="Fuse Repairing"
+                android:onClick="onclick"
+                android:clickable="true"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
@@ -61,7 +65,9 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/border"
                 android:gravity="center"
-                android:text="Water motot Repairing and Installation"
+                android:text="Water motor Repairing and Installation"
+                android:onClick="onclick"
+                android:clickable="true"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
@@ -72,7 +78,9 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/border"
                 android:gravity="center"
-                android:text="Inverter Repairing and \nInstallation"
+                android:text="Inverter Repairing and Installation"
+                android:onClick="onclick"
+                android:clickable="true"
                 android:textColor="#000000"
                 android:textSize="20sp" />\
 
@@ -84,6 +92,8 @@
                 android:background="@drawable/border"
                 android:gravity="center"
                 android:text="Lamps and light fitting"
+                android:onClick="onclick"
+                android:clickable="true"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 

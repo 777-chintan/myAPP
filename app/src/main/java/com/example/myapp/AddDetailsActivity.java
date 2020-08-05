@@ -84,14 +84,11 @@ public class AddDetailsActivity extends AppCompatActivity {
         DatabaseReference myRef= FirebaseDatabase.getInstance().getReference("User");
         String id= FirebaseAuth.getInstance().getUid();
         phone=FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber();
-//        UserProfile userprofile=new UserProfile(name,age,phone,usertype,id,usertoken);
-//        myRef.child(id).setValue(userprofile);
         myRef.child(id).child("userAge").setValue(age);
         myRef.child(id).child("userName").setValue(name);
         myRef.child(id).child("userType").setValue(usertype);
         myRef.child(id).child("userId").setValue(id);
         myRef.child(id).child("userPhoneNumber").setValue(phone);
-
 
         Toast.makeText(AddDetailsActivity.this,usertype,Toast.LENGTH_SHORT).show();
         if(usertype!=null && usertype.equals("Customer")){
@@ -99,8 +96,17 @@ public class AddDetailsActivity extends AppCompatActivity {
             startActivity(new Intent(AddDetailsActivity.this,CustomerActivity.class));
         }
         if(usertype!=null && usertype.equals("Service Provider")){
+            DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Provider").child(FirebaseAuth.getInstance().getUid());
+            reference.child("age").setValue(age);
+            reference.child("name").setValue(name);
+            reference.child("phoneNumber").setValue(phone);
+            reference.child("id").setValue(id);
+            reference.child("rating").setValue(0f);
+            reference.child("numberofraters").setValue(0);
+            reference.child("status").setValue(false);
+            reference.child("distance").setValue(10000);
             finish();
-            startActivity(new Intent(AddDetailsActivity.this,WelcomeActivity.class));
+            startActivity(new Intent(AddDetailsActivity.this,ServiceProvider.class));
         }
     }
 

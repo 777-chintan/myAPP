@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     if (usertype != null && usertype.equals("Service Provider")) {
                         finish();
-                        startActivity(new Intent(MainActivity.this, WelcomeActivity.class));
+                        startActivity(new Intent(MainActivity.this, ServiceProvider.class));
                     }
                 }
                 else{

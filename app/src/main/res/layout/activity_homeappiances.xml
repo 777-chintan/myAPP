@@ -40,6 +40,8 @@
                     android:background="@drawable/border"
                     android:gravity="center"
                     android:text="Ceiling and table fan"
+                    android:onClick="onclick"
+                    android:clickable="true"
                     android:textColor="#000000"
                     android:textSize="20sp" />
 
@@ -51,6 +53,8 @@
                     android:background="@drawable/border"
                     android:gravity="center"
                     android:text="AC"
+                    android:onClick="onclick"
+                    android:clickable="true"
                     android:textColor="#000000"
                     android:textSize="20sp" />
 
@@ -62,6 +66,8 @@
                     android:background="@drawable/border"
                     android:gravity="center"
                     android:text="Air cooler"
+                    android:onClick="onclick"
+                    android:clickable="true"
                     android:textColor="#000000"
                     android:textSize="20sp" />
 
@@ -73,6 +79,8 @@
                     android:background="@drawable/border"
                     android:gravity="center"
                     android:text="Tv"
+                    android:onClick="onclick"
+                    android:clickable="true"
                     android:textColor="#000000"
                     android:textSize="20sp" />
 
@@ -83,7 +91,9 @@
                     android:layout_margin="10dp"
                     android:background="@drawable/border"
                     android:gravity="center"
-                    android:text="RO/Water purifier"
+                    android:text="RO or Water purifier"
+                    android:onClick="onclick"
+                    android:clickable="true"
                     android:textColor="#000000"
                     android:textSize="20sp" />
 
@@ -95,6 +105,8 @@
                     android:background="@drawable/border"
                     android:gravity="center"
                     android:text="Geyser"
+                    android:onClick="onclick"
+                    android:clickable="true"
                     android:textColor="#000000"
                     android:textSize="20sp" />
 
@@ -105,7 +117,9 @@
                     android:layout_margin="10dp"
                     android:background="@drawable/border"
                     android:gravity="center"
-                    android:text="Microwave Oven  "
+                    android:text="Microwave Oven"
+                    android:onClick="onclick"
+                    android:clickable="true"
                     android:textColor="#000000"
                     android:textSize="20sp" />
 
@@ -117,6 +131,8 @@
                     android:background="@drawable/border"
                     android:gravity="center"
                     android:text="Iron"
+                    android:onClick="onclick"
+                    android:clickable="true"
                     android:textColor="#000000"
                     android:textSize="20sp" />
 
@@ -128,6 +144,8 @@
                     android:background="@drawable/border"
                     android:gravity="center"
                     android:text="Juicer, mixer,grinder,blender "
+                    android:onClick="onclick"
+                    android:clickable="true"
                     android:textColor="#000000"
                     android:textSize="20sp" />
 
@@ -139,6 +157,8 @@
                     android:background="@drawable/border"
                     android:gravity="center"
                     android:text="Ghar ghanti"
+                    android:onClick="onclick"
+                    android:clickable="true"
                     android:textColor="#000000"
                     android:textSize="20sp" />
 
@@ -150,6 +170,8 @@
                     android:background="@drawable/border"
                     android:gravity="center"
                     android:text="Home theatre"
+                    android:onClick="onclick"
+                    android:clickable="true"
                     android:textColor="#000000"
                     android:textSize="20sp" />
 
@@ -161,6 +183,8 @@
                     android:background="@drawable/border"
                     android:gravity="center"
                     android:text="Washing machine "
+                    android:onClick="onclick"
+                    android:clickable="true"
                     android:textColor="#000000"
                     android:textSize="20sp" />
 
@@ -172,6 +196,8 @@
                     android:background="@drawable/border"
                     android:gravity="center"
                     android:text="Refrigerator "
+                    android:onClick="onclick"
+                    android:clickable="true"
                     android:textColor="#000000"
                     android:textSize="20sp" />
 
@@ -183,6 +209,8 @@
                     android:background="@drawable/border"
                     android:gravity="center"
                     android:text="Water heater"
+                    android:onClick="onclick"
+                    android:clickable="true"
                     android:textColor="#000000"
                     android:textSize="20sp" />
 
@@ -193,7 +221,9 @@
                     android:layout_margin="10dp"
                     android:background="@drawable/border"
                     android:gravity="center"
-                    android:text="Computer/laptop"
+                    android:text="Computer or laptop"
+                    android:onClick="onclick"
+                    android:clickable="true"
                     android:textColor="#000000"
                     android:textSize="20sp" />
 
@@ -205,6 +235,8 @@
                     android:background="@drawable/border"
                     android:gravity="center"
                     android:text="Mobile"
+                    android:onClick="onclick"
+                    android:clickable="true"
                     android:textColor="#000000"
                     android:textSize="20sp" />
 
@@ -216,6 +248,8 @@
                     android:background="@drawable/border"
                     android:gravity="center"
                     android:text="Other home appliances services"
+                    android:onClick="onclick"
+                    android:clickable="true"
                     android:textColor="#000000"
                     android:textSize="20sp" />
 

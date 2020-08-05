@@ -24,7 +24,7 @@ public class EditprofileActivity extends AppCompatActivity {
 
     private EditText name,number,age;
     private Button save;
-    private BottomNavigationView bottomNavigationView;
+    //private BottomNavigationView bottomNavigationView;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
     private UserProfile userProfile;
@@ -37,7 +37,7 @@ public class EditprofileActivity extends AppCompatActivity {
         setTitle("Edit Profile");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setup();
-        setbottom();
+        //setbottom();
 
         final DatabaseReference ref1=FirebaseDatabase.getInstance().getReference("User");
         final DatabaseReference databaseReference=ref1.child(firebaseAuth.getUid());
@@ -62,7 +62,11 @@ public class EditprofileActivity extends AppCompatActivity {
                     userProfile.setUserAge(age.getText().toString());
                     userProfile.setUserName(name.getText().toString());
                     databaseReference.setValue(userProfile);
-
+                    if(userProfile.getUserType()!=null && userProfile.getUserType().equals("Service Provider")){
+                        DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Provider").child(FirebaseAuth.getInstance().getUid());
+                        reference.child("name").setValue(name.getText().toString());
+                        reference.child("age").setValue(age.getText().toString());
+                    }
                     finish();
                 }
             }
@@ -78,7 +82,7 @@ public class EditprofileActivity extends AppCompatActivity {
     }
 
     private void setup(){
-        bottomNavigationView=findViewById(R.id.bottom_navigation);
+        //bottomNavigationView=findViewById(R.id.bottom_navigation);
         age=findViewById(R.id.etAge);
         name=findViewById(R.id.etName);
         number=findViewById(R.id.etPhoneNumber);
@@ -87,28 +91,28 @@ public class EditprofileActivity extends AppCompatActivity {
         firebaseDatabase=FirebaseDatabase.getInstance();
     }
 
-    private void setbottom(){
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()){
-                    case R.id.nav_home: {
-                        finish();
-                        startActivity(new Intent(EditprofileActivity.this, CustomerActivity.class));
-                        break;
-                    }
-                    case R.id.nav_cart:
-                        startActivity(new Intent(EditprofileActivity.this,WelcomeActivity.class));
-                        break;
-                    case R.id.nav_profile:
-                        finish();
-                        startActivity(new Intent(EditprofileActivity.this,AccountActivity.class));
-                        break;
-                }
-                return true;
-            }
-        });
-    }
+//    private void setbottom(){
+//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+//                switch (menuItem.getItemId()){
+//                    case R.id.nav_home: {
+//                        finish();
+//                        startActivity(new Intent(EditprofileActivity.this, CustomerActivity.class));
+//                        break;
+//                    }
+//                    case R.id.nav_cart:
+//                        startActivity(new Intent(EditprofileActivity.this,WelcomeActivity.class));
+//                        break;
+//                    case R.id.nav_profile:
+//                        finish();
+//                        startActivity(new Intent(EditprofileActivity.this,AccountActivity.class));
+//                        break;
+//                }
+//                return true;
+//            }
+//        });
+//    }
 
     private boolean validate(){
         if(name.getText().toString().isEmpty()){
