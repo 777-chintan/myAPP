@@ -13,9 +13,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Pastorders"></activity>
-        <activity android:name=".Currentorder" />
-        <activity android:name=".OrderList" />
+        <activity android:name=".Rateprovider"></activity>
+        <activity android:name=".Accountprovider" />
+        <activity android:name=".Pastorders" />
+        <activity android:name=".Currentorder">
+            <intent-filter>
+                <action android:name="OPEN_ACTIVITY_1" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Placeorder" />
         <activity android:name=".Addskill" />
         <activity android:name=".SkillActivity" />

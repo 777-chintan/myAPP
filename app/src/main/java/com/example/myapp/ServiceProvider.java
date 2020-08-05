@@ -15,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,6 +34,8 @@ public class ServiceProvider extends AppCompatActivity {
     Float rating;
     private Switch status;
     private boolean c,flag;
+    private BottomNavigationView bottomNavigationView;
+
 
     private Spinner location;
     private ArrayList<AddressSetup> address;
@@ -44,6 +47,7 @@ public class ServiceProvider extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_provider);
         setup();
+        setbottom();
         getstatus();
         makelist();
 
@@ -117,6 +121,7 @@ public class ServiceProvider extends AppCompatActivity {
     }
 
     private void setup(){
+        bottomNavigationView=findViewById(R.id.bottom_navigation);
         firebaseAuth= FirebaseAuth.getInstance();
         //spn=findViewById(R.id.skill);
         //btn=findViewById(R.id.add_skill);
@@ -192,7 +197,7 @@ public class ServiceProvider extends AppCompatActivity {
                 break;
             }
             case R.id.profileMenu:{
-                startActivity(new Intent(ServiceProvider.this,AccountActivity.class));
+                startActivity(new Intent(ServiceProvider.this,Accountprovider.class));
                 address.clear();
                 addressname.clear();
                 addressname.add("Select Location");
@@ -204,6 +209,10 @@ public class ServiceProvider extends AppCompatActivity {
             }
             case R.id.current:{
                 startActivity(new Intent(ServiceProvider.this,Currentorder.class));
+                break;
+            }
+            case R.id.past:{
+                startActivity(new Intent(ServiceProvider.this,Pastorders.class));
                 break;
             }
         }
@@ -234,6 +243,27 @@ public class ServiceProvider extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+    }
+
+    private void setbottom(){
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case R.id.nav_home: {
+                        Toast.makeText(ServiceProvider.this,"You are there",Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+                    case R.id.nav_cart:
+                        startActivity(new Intent(ServiceProvider.this,Currentorder.class));
+                        break;
+                    case R.id.nav_profile:
+                        startActivity(new Intent(ServiceProvider.this, Accountprovider.class));
+                        break;
+                }
+                return true;
             }
         });
     }

@@ -80,13 +80,15 @@ public class Placeorder extends AppCompatActivity {
             }
         });
 
+        check();
+
         place.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ref=FirebaseDatabase.getInstance().getReference("Orders");
                 ref2=FirebaseDatabase.getInstance().getReference("UserOrders").child("Current Order");
                 ref3=FirebaseDatabase.getInstance().getReference("Provider").child(id);
-                if(check()) {
+                if(flag) {
                     String key = ref.push().getKey();
                     order.setOrderID(key);
                     order.setCustomerID(FirebaseAuth.getInstance().getUid());
@@ -109,8 +111,6 @@ public class Placeorder extends AppCompatActivity {
                     startActivity(new Intent(Placeorder.this,Currentorder.class));
                     finish();
                 }
-                else
-                    Toast.makeText(Placeorder.this,"You have already an Order.",Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -131,9 +131,8 @@ public class Placeorder extends AppCompatActivity {
         });
     }
 
-    private boolean check(){
+    private void check(){
         getcurrentOrder();
-        return flag;
     }
 
     private void getcurrentOrder(){
@@ -164,13 +163,17 @@ public class Placeorder extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 order=snapshot.getValue(Order.class);
                 completed=order.Iscompleted();
-                //  here you have to goto rating page
                 if(completed) {
-                    Toast.makeText(Placeorder.this, "Enter Rating", Toast.LENGTH_SHORT).show();
-                    flag=false;
+                    Intent intent=new Intent(Placeorder.this,Rateprovider.class);
+                    intent.putExtra("oid",order.orderID);
+                    intent.putExtra("cid",order.customerID);
+                    intent.putExtra("pid",order.providerID);
+                    startActivity(intent);
+                    flag=true;
                 }
                 else{
                     flag=false;
+                    Toast.makeText(Placeorder.this,"You already have an Order.",Toast.LENGTH_SHORT).show();
                 }
 
             }

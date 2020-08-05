@@ -2,6 +2,8 @@ package com.example.myapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,6 +12,10 @@ import android.location.Location;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +33,7 @@ import com.google.maps.android.SphericalUtil;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -36,6 +43,7 @@ public class GetlistActivity extends AppCompatActivity {
     private ProviderAdapter adapter;
     private List<Provider> providerList;
     private AddressSetup fix_address=null;
+    private Spinner spn;
     private TextView t1;
     private String service;
     Double rating;
@@ -55,6 +63,27 @@ public class GetlistActivity extends AppCompatActivity {
         Query query=ref.child(service);
         query.addListenerForSingleValueEvent(valueEventListener);
 
+        spn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(parent.getItemAtPosition(position).equals("Sort By")){
+                    Toast.makeText(GetlistActivity.this,"please Select from Sort By",Toast.LENGTH_SHORT).show();
+                }
+                else if(parent.getItemAtPosition(position).equals("Rating")){
+                    Collections.sort(providerList, Provider.RatingComparator);
+                    adapter.notifyDataSetChanged();
+                }
+                else{
+                    Collections.sort(providerList, Provider.PriceComparator);
+                    adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
     }
 
@@ -135,13 +164,22 @@ public class GetlistActivity extends AppCompatActivity {
 
     private void setup(){
         service=getIntent().getStringExtra("service");
+
         recyclerView = findViewById(R.id.recycler);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.addItemDecoration(new
+                DividerItemDecoration(GetlistActivity.this,
+                DividerItemDecoration.VERTICAL));
+
         providerList = new ArrayList<>();
         adapter = new ProviderAdapter(this,providerList,service);
         recyclerView.setAdapter(adapter);
         t1=findViewById(R.id.txt);
+
+        spn=findViewById(R.id.spn);
+        ArrayAdapter<CharSequence> a=ArrayAdapter.createFromResource(this,R.array.sort,R.layout.support_simple_spinner_dropdown_item);
+        spn.setAdapter(a);
     }
 
     public boolean onOptionsItemSelected(MenuItem item){

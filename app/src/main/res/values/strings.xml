@@ -49,4 +49,10 @@
         <item>Water tank</item>
         <item>Water lines or pipe fitting and repairing</item>
     </string-array>
+
+    <string-array name="sort">
+        <item>Sort By</item>
+        <item>Rating</item>
+        <item>Price</item>
+    </string-array>
 </resources>

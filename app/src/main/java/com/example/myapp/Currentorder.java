@@ -63,7 +63,7 @@ public class Currentorder extends AppCompatActivity {
                     ref3.child(id3).removeValue();
                 }
                 else{
-                    ref2.child("check").setValue(true);
+                    ref2.child(id1).child("check").setValue(true);
                     ref3.child(id3).removeValue();
                     ref4.child(id2).child(id1).child("orderID").setValue(id1);
                     ref4.child(id3).child(id1).child("orderID").setValue(id1);

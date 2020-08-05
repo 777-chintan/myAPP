@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class AccountActivity extends AppCompatActivity {
+public class Accountprovider extends AppCompatActivity {
 
     private TextView tv1,tv2,tv3,tv4;
     private BottomNavigationView bottomNavigationView;
@@ -31,22 +31,14 @@ public class AccountActivity extends AppCompatActivity {
         tv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AccountActivity.this,ProfileActivity.class));
+                startActivity(new Intent(Accountprovider.this,ProfileActivity.class));
             }
         });
 
         tv2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AccountActivity.this,Manageaddress.class));
-                finish();
-            }
-        });
-
-        tv3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(AccountActivity.this,Rateprovider.class));
+                startActivity(new Intent(Accountprovider.this,Manageaddress.class));
                 finish();
             }
         });
@@ -55,7 +47,7 @@ public class AccountActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(AccountActivity.this,RegisterActivity.class));
+                startActivity(new Intent(Accountprovider.this,RegisterActivity.class));
                 finish();
             }
         });
@@ -67,6 +59,7 @@ public class AccountActivity extends AppCompatActivity {
         tv3=findViewById(R.id.tv3);
         tv4=findViewById(R.id.tv4);
         bottomNavigationView=findViewById(R.id.bottom_navigation);
+
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
@@ -81,14 +74,14 @@ public class AccountActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()){
                     case R.id.nav_home: {
                         finish();
-                        startActivity(new Intent(AccountActivity.this, CustomerActivity.class));
+                        startActivity(new Intent(Accountprovider.this, ServiceProvider.class));
                         break;
                     }
                     case R.id.nav_cart:
-                        startActivity(new Intent(AccountActivity.this,Currentorder.class));
+                        startActivity(new Intent(Accountprovider.this,Currentorder.class));
                         break;
                     case R.id.nav_profile:
-                        Toast.makeText(AccountActivity.this,"You are there",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Accountprovider.this,"You are there",Toast.LENGTH_SHORT).show();
                         break;
                 }
                 return true;

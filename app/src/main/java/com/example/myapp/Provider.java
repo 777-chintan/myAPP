@@ -1,6 +1,7 @@
 package com.example.myapp;
 
 import java.io.Serializable;
+import java.util.Comparator;
 
 public class Provider implements Serializable {
     public String age;
@@ -86,4 +87,26 @@ public class Provider implements Serializable {
 
     public double getDistance(){return distance;}
     public void setDistance(double distance){this.distance=distance;}
+
+    public static Comparator<Provider> RatingComparator = new Comparator<Provider>(){
+
+        public int compare(Provider p1,Provider p2){
+            Float f1=p1.rating;
+            Float f2=p2.rating;
+            return f2.compareTo(f1);
+        }
+    };
+
+    public static Comparator<Provider> PriceComparator = new Comparator<Provider>(){
+
+        public int compare(Provider p1,Provider p2){
+            int f1=p1.price;
+            int f2=p2.price;
+            if(f2<=f1)
+                return 0;
+            else
+                return 1;
+        }
+    };
+
 }
